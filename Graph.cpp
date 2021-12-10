@@ -66,6 +66,34 @@ void Graph::DFSprivate(int startNode){
 				std::cout << top << " ";
 				visited[loc] = true;
 			}
+			int count = adjList[loc]->getCount();
+			int arr2[count];
+			int* arr = arr2;
+			adjList[loc]->returnArray(arr);
+			for(int x = 0; x < count; x++){
+				int loc = returnInsertLocation(arr2[x]);
+				if(!visited[loc]){
+					stack.push(arr2[x]);
+				}
+			}
+	}
+
+}
+void Graph::BFS(int startingNode){
+	BFSprivate(startingNode);
+}
+void Graph::BFSprivate(int startingNode){
+	vector<bool> visited(nodes, false);
+	queue<int> q;
+	q.push	(startingNode);
+	while(!q.empty()){
+		int top = q.front();
+		q.pop();
+		int loc = returnInsertLocation(top);
+		if(!visited[loc]){
+			std::cout << top << " ";
+			visited[loc] = true;
+		}
 		int count = adjList[loc]->getCount();
 		int arr2[count];
 		int* arr = arr2;
@@ -73,11 +101,10 @@ void Graph::DFSprivate(int startNode){
 		for(int x = 0; x < count; x++){
 			int loc = returnInsertLocation(arr2[x]);
 			if(!visited[loc]){
-				stack.push(arr2[x]);
+				q.push(arr2[x]);
 			}
 		}
 	}
-
 }
 Graph::~Graph(){
 	nodes = 0;
