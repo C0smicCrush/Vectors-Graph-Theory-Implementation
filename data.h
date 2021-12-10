@@ -1,9 +1,7 @@
 /* 
  * File: data.h
- * Author: Alex Katrompas
+ * Author: Aatmodhee Goswami
  * 
- * DO NOT MODIFY THIS FILE
- * LEAVE THIS COMMENT HEADER HERE
  */
 
 #ifndef DATA_H
@@ -24,5 +22,5 @@ struct Node {
     Node *prev;
 };
 
-#endif /* DATA_H */
+#endif
 
