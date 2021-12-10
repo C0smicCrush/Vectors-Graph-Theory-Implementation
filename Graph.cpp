@@ -70,7 +70,7 @@ void Graph::DFSprivate(int startNode){
 			int arr2[count];
 			int* arr = arr2;
 			adjList[loc]->returnArray(arr);
-			for(int x = 0; x < count; x++){
+			for(int x = count -1; x > -1; x--){
 				int loc = returnInsertLocation(arr2[x]);
 				if(!visited[loc]){
 					stack.push(arr2[x]);
@@ -98,7 +98,7 @@ void Graph::BFSprivate(int startingNode){
 		int arr2[count];
 		int* arr = arr2;
 		adjList[loc]->returnArray(arr);
-		for(int x = 0; x < count; x++){
+		for(int x = 0;x < count;x++){
 			int loc = returnInsertLocation(arr2[x]);
 			if(!visited[loc]){
 				q.push(arr2[x]);
