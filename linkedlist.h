@@ -19,8 +19,9 @@
  		bool connectNodes(int, string*, Node*, Node*);
  		bool deleteSubFunc(Node*);
  	public:
+ 		void returnArray(int*);
  		LinkedList();
- 		bool addNode(int, string*);
+ 		bool addNode(int, string*,int);
  		bool deleteNode(int);
  		bool getNode(int, Data*);
  		void printList(bool=false);

@@ -9,7 +9,7 @@
  LinkedList::LinkedList(){
 	head = NULL;
  }
-bool LinkedList::addNode(int idIn, string* inString){
+bool LinkedList::addNode(int idIn, string* inString,int Distance){
 	bool added = false;
 	Node* position = head;
 	if((idIn > 0) &&  !(inString->empty())){
@@ -17,6 +17,7 @@ bool LinkedList::addNode(int idIn, string* inString){
 		Node* nodePtr = new Node;
 		nodePtr->data.data = *inString;
 		nodePtr->data.id = idIn;
+		nodePtr->data.distance = Distance;
 		if(!head  || head->data.id > idIn){
 			added = addNewHead(idIn, inString, position, nodePtr);
 			check++;
@@ -35,7 +36,7 @@ bool LinkedList::addNode(int idIn, string* inString){
 	 return added;
 }
 
- 
+
  bool LinkedList::addNewTail(int idIn, string* inString, Node* position, Node* inNode)
  {
 	position->next = inNode;
@@ -75,7 +76,15 @@ bool LinkedList::addNode(int idIn, string* inString){
  
  return true;
  }
- 
+void LinkedList::returnArray(int* inArr){
+ 	int count = getCount();
+ 	Node* pos = head;
+ 	for(int x =0; x < count; x++){
+ 		*(inArr+x) = pos->data.id;
+ 		pos = pos->next;
+
+	 }
+ }
  bool LinkedList::getNode(int id, Data* inData){
  	bool added = true;
  	if(id > 0){
