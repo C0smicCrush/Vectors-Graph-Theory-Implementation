@@ -1,7 +1,26 @@
 #include <iostream>
 #include "graph.h"
+
+void testforloop()
+{
+	Graph graph;
+	// Test adding vertices using for loop https://stackoverflow.com/a/70316586/16582
+	std::cout << "\nfor loop test\n";
+	for (int x = 0; x < 100; x++)
+	{
+		graph.addVertex(x);
+	}
+	// 99 vertices expected because the vertex '0' is rejected
+	if( graph.returnVertices() != 99 )
+		throw std::runtime_error("for loop test failed");
+	std::cout << "for loop test PASSED\n";
+}
+
 int main(){
 
+
+	testforloop();
+	
 	Graph graph;// create Graph
 	
 	std::cout << std::endl<<  "returnVertices on an empty graph" << std::endl << "----------------------------"<<std::endl << std::endl;
