@@ -28,6 +28,7 @@
  		int getCount();
  		bool clearList();
 		bool exists(int);
+		void printNode(int);
 		 
  };
  

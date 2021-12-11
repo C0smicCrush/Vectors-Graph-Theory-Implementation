@@ -96,6 +96,7 @@ void LinkedList::returnArray(int* inArr){
 			added = true;
 			inData->id = id;
 			inData->data = ptr->data.data;
+			inData->distance = ptr->data.distance;
 		} 
 		else{
 			inData->id = -1;
@@ -109,7 +110,16 @@ void LinkedList::returnArray(int* inArr){
 	 }
 	 return added;
  }
- 
+ void LinkedList::printNode(int id){
+ 	Node* ptr = head;
+
+ 		while(ptr->next && ptr->data.id < id){
+ 			ptr = ptr->next;
+		 }
+		if(ptr->data.id == id){
+			std::cout << " at a distance of " << ptr->data.distance << std::endl;
+		} 
+}
  bool LinkedList::clearList(){
  	if(head){
  		Node* ptr = head;
@@ -192,7 +202,7 @@ void LinkedList::returnArray(int* inArr){
  			position = position->next;
 		 }
 		while(position){
-			std::cout << position->data.id << position->data.data<<std::endl;
+			std::cout << position->data.id << " with a distance of " <<  position->data.distance<<std::endl;
 			position = position->prev;
 		}
 	 }
@@ -201,7 +211,7 @@ void LinkedList::returnArray(int* inArr){
  	Node* position;
  	position = head;
  	while (position != NULL){
- 		std::cout << position->data.id << position->data.data<<std::endl;
+ 		std::cout << position->data.id <<" with a distance of " << position->data.distance<<std::endl;
  		position = position->next;
 	 }
 	}

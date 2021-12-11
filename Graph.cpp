@@ -106,6 +106,51 @@ void Graph::BFSprivate(int startingNode){
 		}
 	}
 }
+bool Graph::removeVertex(int intIn){
+	bool removed = 0;
+	int loc = returnInsertLocation(intIn);
+	if(adjNums[loc] == intIn){
+		removed = 1;
+		edges = edges - adjList[loc]->getCount();
+		for(int x = 0; x < nodes; x++){
+			bool check = adjList[x]->deleteNode(intIn);
+			edges = edges - check;
+		}
+		delete adjList[loc];
+		adjList.erase(adjList.begin() + loc);
+		adjNums.erase(adjNums.begin() + loc);
+		nodes--;
+	}
+
+	return removed;
+}
+bool Graph::removeEdge(int primary, int secondary){
+	bool removed = 0;
+	int loc = returnInsertLocation(primary);
+	if(adjNums[loc] == primary){
+		removed = adjList[loc]->deleteNode(secondary);
+	}
+	edges = edges - removed;
+	return removed;
+}
+void Graph::returnNeighbors(int startingNode){
+	int loc = returnInsertLocation(startingNode);
+	if(adjNums[loc] == startingNode){
+		std::cout << startingNode << " Goes to " << std::endl; 
+		adjList[loc]->printList(true);
+		std::cout << "The following go to " << startingNode << std::endl;
+		for(int x = 0; x < nodes; x++){
+			if(adjList[x]->exists(startingNode)){
+				std::cout << adjNums[x];
+				adjList[x]->printNode(startingNode);
+			}
+		}
+	}
+	else{
+		std::cout << "Nothing is connected to " << startingNode << std::endl;
+	}
+
+}
 Graph::~Graph(){
 	nodes = 0;
 	edges = 0;

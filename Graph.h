@@ -17,6 +17,7 @@ class Graph{
 		void DFSprivate(int);
 		void BFSprivate(int);
 	public:
+		void returnNeighbors(int);
 		void DFS(int);
 		void BFS(int);
 		Graph();
