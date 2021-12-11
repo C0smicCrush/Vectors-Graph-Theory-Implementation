@@ -236,10 +236,20 @@ void Graph::returnNeighbors(int startingNode){
 	}
 
 }
-Graph::~Graph(){
-	edges = 0;
+Graph::~Graph()
+{
+	clear();
+}
+
+void Graph::clear()
+{
+
 	for(int x = 0; x < vertices; x++){
 		delete adjList[x];
 	}
+	adjList.clear();
+	adjNums.clear();
+
+	edges = 0;
 	vertices = 0;
 }

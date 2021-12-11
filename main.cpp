@@ -20,7 +20,7 @@ int main(){
 
 
 	testforloop();
-	
+
 	Graph graph;// create Graph
 	
 	std::cout << std::endl<<  "returnVertices on an empty graph" << std::endl << "----------------------------"<<std::endl << std::endl;
@@ -169,10 +169,9 @@ int main(){
 	std::cout << "Edges before removal : " << graph.returnEdges() << std::endl; 
  	
  	
- 	//delete graph
- 	Graph* graphPtr;
- 	graphPtr = &graph;
- 	delete graphPtr;
+	// restore to empty graph
+	graph.clear();
+	
  	Graph graphTest;
  	graphTest.addVertex(0);
  	graphTest.addVertex(1);

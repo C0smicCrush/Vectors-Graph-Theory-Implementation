@@ -25,6 +25,10 @@ class Graph{
 		void BFS(int);
 		Graph();
 		~Graph();
+
+		/// free memory consumed and restore initial, empty state
+		void clear();
+
 		int returnVertices();
 		int returnEdges();
 		bool addVertex(int);
