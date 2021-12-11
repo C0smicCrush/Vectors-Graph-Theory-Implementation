@@ -5,12 +5,14 @@ Purpose: This is the cpp file for the stack program, which elaborates on the pro
 **********************/
 #include "stack.h"
 Stack::~Stack(){
-	int x = 0;
+	int top = 0;
+	delete[] a;
 }
 
 // include header
-Stack::Stack(){
-
+Stack::Stack(int intIn){
+	int* array{ new int[intIn]{} };
+	a = array;
 	top = -1;
 }
 //Checks if empty
@@ -38,12 +40,10 @@ int Stack::pop(){//Returns a value too so it's a combination of getter and sette
 }
 bool Stack::push(int x){
 	bool bo = false;
-	if(top < STACK_SIZE - 1 ){
 		
 		a[++top] = x;
 
 		bo = true;		
-	}
 	return bo;
 }
 

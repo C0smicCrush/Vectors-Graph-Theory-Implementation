@@ -1,10 +1,18 @@
+/*
+	Author: Aatmodhee Goswami
+	file: Graph.cpp
+	Purpose and usage: This file is the brains of the Graph Class and includes all of its methods
+ */
 #include "Graph.h"
 Graph::Graph(){
 	vertices = 0;
-	edges = 0;
 	outSTR = "Hello";
 }
 int Graph::returnEdges(){
+	int edges = 0;
+	for(int x = 0; x < vertices; x++){
+		edges = edges + adjList[x]->getCount();
+	}
 	return edges;
 }
 int Graph::returnVertices(){
@@ -43,7 +51,7 @@ bool Graph::isDisconnected(){
 bool Graph::disconnectedHelper(int startNode){
 	vector<bool> visited(vertices, false);
 	bool ret = 0;
-	Stack stack;
+	Stack stack(vertices);
 	int vis = 0;
 	stack.push(startNode);
 	while(!stack.isEmpty()){
@@ -65,6 +73,7 @@ bool Graph::disconnectedHelper(int startNode){
 			}
 		}
 }
+	delete &stack;
 	if(vis == vertices){
 		ret = 1;
 	}
@@ -80,7 +89,6 @@ bool Graph::addEdge(int primary, int secondary,int distance){
 		int count2 = adjList[loc]->getCount();
 		if(count1 < count2){
 			added = 1;
-			edges++;
 		}
 	}
 
@@ -121,7 +129,7 @@ void Graph::DFS(int startNode){
 bool Graph::DFSprivate(int startNode){
 		vector<bool> visited(vertices, false);
 		bool ret = 0;
-		Stack stack;
+		Stack stack(vertices);
 		int vis = 0;
 		stack.push(startNode);
 		while(!stack.isEmpty()){
@@ -194,11 +202,9 @@ bool Graph::removeVertex(int intIn){
 	int loc = returnInsertLocation(intIn);
 	if(adjNums[loc] == intIn){
 		removed = 1;
-		edges = edges - adjList[loc]->getCount();
 		for(int x = 0; x < vertices; x++){
-			bool check = adjList[x]->deleteNode(intIn);
-			edges = edges - check;
-			}
+			adjList[x]->deleteNode(intIn);
+		}
 		delete adjList[loc];
 		adjList.erase(adjList.begin() + loc);
 		adjNums.erase(adjNums.begin() + loc);
@@ -214,7 +220,6 @@ bool Graph::removeEdge(int primary, int secondary){
 	if(adjNums[loc] == primary){
 		removed = adjList[loc]->deleteNode(secondary);
 		}	
-	edges = edges - removed;
 	return removed;
 	}
 }
@@ -237,9 +242,8 @@ void Graph::returnNeighbors(int startingNode){
 
 }
 Graph::~Graph(){
-	edges = 0;
 	for(int x = 0; x < vertices; x++){
-		delete adjList[x];
+		removeVertex(adjNums[x]);
 	}
 	vertices = 0;
 }

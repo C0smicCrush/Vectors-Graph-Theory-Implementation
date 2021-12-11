@@ -6,7 +6,6 @@ Purpose: This is the header file for the stack program.It creates a class and pr
 #ifndef STACK_ONE
 #define STACK_ONE
 //Maximum size of Stack
-#define STACK_SIZE 50
 
 /*
  Class Definition
@@ -16,7 +15,7 @@ class Stack
    
     public:
 
-    Stack();
+    Stack(int);
 	~Stack();
 
     // Getters and Setters
@@ -28,7 +27,7 @@ class Stack
     private:
     // Private attributes top and the array which houses stack
     int top;
-    int a[STACK_SIZE];
+    int* a;
 };
 
 

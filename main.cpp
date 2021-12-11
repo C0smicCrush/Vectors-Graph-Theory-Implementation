@@ -1,4 +1,9 @@
 #include "main.h"
+/*
+	Author: Aatmodhee Goswami
+	file: main.cpp
+	Purpose and usage: This file is the exhaustive testing ground for the Graph ADT
+ */
 int main(){
 
 	Graph graph;// create Graph
@@ -38,6 +43,8 @@ int main(){
 	std::cout << std::endl<<  "Adding another proper" << std::endl << "----------------------------"<<std::endl << std::endl;
 	graph.addVertex(4); //add another node so we can see how the Graph behaves
 	std::cout << "Vertices : " << graph.returnVertices() << std::endl;
+	graph.addVertex(5);//add another one
+	
 	
 	std::cout << std::endl<<  "BFS and DFS on disconnected" << std::endl << "----------------------------"<<std::endl << std::endl;
 	//Check DFS and BFS
@@ -109,6 +116,9 @@ int main(){
 	graph.addEdge(3,4,4);
 	graph.addEdge(3,5,7);
 	std::cout << ".....done" << std::endl;
+	for(int x =0; x < 10; x++){
+		graph.addEdge(x,x-1,2); //Test how it performs under loops
+	}
 	
 	
 	//returnNeighbors testing
@@ -138,6 +148,7 @@ int main(){
 	std::cout <<"Removal : " << graph.removeVertex(2) << std::endl;//2 is a vertex
 	std::cout << "Vertices after removal : " << graph.returnVertices()<<std::endl;
 	
+	
 	//removeEdge testing
 	std::cout << std::endl<<  "Testing removeEdge with known edge" << std::endl << "----------------------------"<<std::endl << std::endl;
 	std::cout << "Edges before removal : " << graph.returnEdges()<<std::endl;
@@ -149,22 +160,72 @@ int main(){
 	std::cout << "Edges before removal : " << graph.returnEdges() << std::endl; 
  	
  	
- 	//delete graph
+	std::cout << std::endl<<  "Testing graph under for loops" << std::endl << "----------------------------"<<std::endl << std::endl; 	
+ 	for(int x = 0; x < 10; x++ ){
+ 		graph.addVertex(x);
+ 		graph.addEdge(x,x-1,2);
+ 		graph.addEdge(x-1,x,2);
+	 }
+	std::cout << "......done" <<std::endl;
+	std::cout << std::endl<<  "BFS of 10" << std::endl << "----------------------------"<<std::endl << std::endl; 		 
+	graph.BFS(10);
+	
+	std::cout << std::endl<<  "Making a list of random data and adding it to vertex randomly as our final test" << std::endl << "--------------------------------------------------------------"<<std::endl << std::endl;
+	srand(time(NULL));
+	const int testdatasize  = rand () % 30 + 10;
+	int testdata[testdatasize];
+	int distances[testdatasize];
+	for(int x = 0 ; x < testdatasize; x ++ ){
+		testdata[x] = rand() % 30;
+		distances[x]  = rand() % 30;
+		graph.addVertex(testdata[x]);
+	}
+	std::cout << std::endl<<  "Data Added" << std::endl << "----------------------------"<<std::endl << std::endl;
+	
+	std::cout << std::endl<<  "Randomly doing operations 50 times" << std::endl << "----------------------------"<<std::endl << std::endl;
+	for(int x = 0; x < 50; x++){
+		int ran = rand() % 3;
+		int ran2 = 10 + rand() % 5;
+		int randist = 10 +  rand() % 3;
+		switch(ran){
+			case 0:
+				graph.addEdge(testdata[ran2], testdata[randist], distances[randist]);
+				break;
+			case 1:
+				graph.removeEdge(testdata[ran2],testdata[randist]);
+				break;
+			case 2:
+				graph.addVertex(testdata[ran2]);
+				break;
+		}
+	}
+	std::cout << std::endl<<  "Checking the Vertices and Edges" << std::endl << "----------------------------"<<std::endl << std::endl;
+	std::cout << "Edges : "  << graph.returnEdges() << std::endl;
+	std::cout << "Vertices : " << graph.returnVertices() << std::endl;
+	std::cout << std::endl<<  "Now trying BFS with a few random ints which are in the Graph" << std::endl << "----------------------------"<<std::endl << std::endl;
+	for(int x = 0; x < 5; x++){
+		int ran = rand() % testdatasize;
+		std::cout << std::endl << "Next: " << std::endl;
+		graph.BFS(testdata[ran]); 
+
+	}
+	std::cout << std::endl<<  "Running isDisconnected" << std::endl << "----------------------------"<<std::endl << std::endl;
+	std::cout << "Disconnected : " << graph.isDisconnected() << std::endl;
+	std::cout << std::endl<<  "Now trying DFS with a few random ints which are in the Graph" << std::endl << "----------------------------"<<std::endl << std::endl;
+	for(int x = 0; x < 5; x++){
+		int ran = rand() % testdatasize;
+		std::cout << std::endl << "Next: " << std::endl;
+		graph.DFS(testdata[ran]); 
+
+	}
+	std::cout << std::endl<<  "Running isDisconnected" << std::endl << "----------------------------"<<std::endl << std::endl;
+	std::cout << "Disconnected : " << graph.isDisconnected() << std::endl;
+	std::cout << std::endl<<  "Deleting Graph....." << std::endl << "----------------------------"<<std::endl << std::endl;
+  	//delete graph
  	Graph* graphPtr;
  	graphPtr = &graph;
  	delete graphPtr;
- 	Graph graphTest;
- 	graphTest.addVertex(0);
- 	graphTest.addVertex(1);
- 	graphTest.addVertex(2);
- 	graphTest.addVertex(3);
- 	graphTest.addVertex(4);
- 	graphTest.addVertex(5);
- 	graphTest.addVertex(6);
- 	graphTest.addVertex(7);
- 	graphTest.addVertex(8);
- 	graphTest.addVertex(9);
- 	std::cout << graphTest.returnVertices();
+ 	std::cout << "done...." << std::endl;
  	
 	return 0;
 }

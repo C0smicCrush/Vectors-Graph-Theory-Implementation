@@ -1,3 +1,8 @@
+/*
+	Author: Aatmodhee Goswami
+	file: Graph.h
+	Purpose and usage: This file is the header file of the Graph class, and includes all of its prototypes
+ */
 #ifndef GRAPH_H
 #define GRAPH_H
 #include "linkedlist.h"

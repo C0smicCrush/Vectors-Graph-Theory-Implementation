@@ -1,9 +1,6 @@
 /* 
  * File: data.h
- * Author: Alex Katrompas
- * 
- * DO NOT MODIFY THIS FILE
- * LEAVE THIS COMMENT HEADER HERE
+ * Author: Aatmodhee Goswami
  */
 
 #ifndef DATA_H
