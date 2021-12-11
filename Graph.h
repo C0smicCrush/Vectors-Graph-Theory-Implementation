@@ -9,25 +9,29 @@ using std::vector;
 using std::queue;
 class Graph{
 	private:
-		int nodes,edges;
+		int vertices,edges;
 		vector<LinkedList*> adjList;
 		vector<int> adjNums;
 		string outSTR;
 		int returnInsertLocation(int);
-		void DFSprivate(int);
-		void BFSprivate(int);
+		bool DFSprivate(int);
+		bool BFSprivate(int);
+		bool disconnectedHelper(int);
 	public:
+		bool existsVertex(int);
+		bool existsEdge(int,int);
 		void returnNeighbors(int);
 		void DFS(int);
 		void BFS(int);
 		Graph();
 		~Graph();
-		int returnNodes();
+		int returnVertices();
 		int returnEdges();
 		bool addVertex(int);
 		bool addEdge(int,int,int);
 		bool removeVertex(int);
 		bool removeEdge(int, int);
+		bool isDisconnected();
 			
 };
 #endif

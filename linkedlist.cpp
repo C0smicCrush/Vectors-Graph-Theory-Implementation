@@ -12,7 +12,7 @@
 bool LinkedList::addNode(int idIn, string* inString,int Distance){
 	bool added = false;
 	Node* position = head;
-	if((idIn > 0) &&  !(inString->empty())){
+	if((idIn > 0) &&  !(inString->empty()) && Distance > 0){
 		int check  = 0;
 		Node* nodePtr = new Node;
 		nodePtr->data.data = *inString;

@@ -6,7 +6,7 @@ Purpose: This is the header file for the stack program.It creates a class and pr
 #ifndef STACK_ONE
 #define STACK_ONE
 //Maximum size of Stack
-#define STACK_SIZE 10
+#define STACK_SIZE 50
 
 /*
  Class Definition
