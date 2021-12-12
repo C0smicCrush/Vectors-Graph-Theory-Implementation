@@ -264,10 +264,12 @@ void Graph::printVertices(){
 void Graph::clearGraph(){
 	for(int x = 0; x < vertices; x++){
 		removeVertex(adjNums[x]);
+		
 	}
+	adjNums.clear();
+	adjList.clear();
+	vertices = 0;
 }
 Graph::~Graph(){
-	adjList.clear();
-	adjNums.clear();
-	vertices = 0;
+	clearGraph();
 }

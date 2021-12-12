@@ -1,5 +1,14 @@
+ main
 #include <iostream>
 #include "graph.h"
+=======
+/*
+	Author: Aatmodhee Goswami
+	file: main.cpp
+	Purpose and usage: This file is the testing center of the Graph Class and includes all of its public methods to test
+ */
+#include "main.h"
+ main
 int main(){
 
 	Graph graph;// create Graph
@@ -226,7 +235,12 @@ int main(){
   	for(int x =0; x < 30; x++){
   		graph.removeVertex(x);
 	  }
-	std::cout << std::endl<<  "Done Testing" << std::endl << "----------------------------"<<std::endl << std::endl;
+	std::cout << std::endl<<  "..done" << std::endl << "----------------------------"<<std::endl << std::endl;
+
+	std::cout << std::endl<<  "Testing clearGraph() method" << std::endl << "----------------------------"<<std::endl << std::endl;
  	graph.clearGraph();
+ 	std::cout << std::endl<<  "..done" << std::endl << "----------------------------"<<std::endl << std::endl;
+ 	std::cout << std::endl<<  "Vertices : " << graph.returnVertices() <<  std::endl << "----------------------------"<<std::endl << std::endl;
+ 	std::cout << std::endl<<  "Done Testing" << std::endl << "----------------------------"<<std::endl << std::endl;
 	return 0;
 }

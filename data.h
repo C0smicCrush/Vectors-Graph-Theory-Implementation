@@ -1,6 +1,7 @@
 /* 
  * File: data.h
  * Author: Aatmodhee Goswami
+ * Purpose: Defines the  Node and Data data structures which are to be used in the LinkedList
  */
 
 #ifndef DATA_H
