@@ -3,7 +3,7 @@
 */
 
 #unignore what we want to track
+!*.mk
 !*.cpp
 !*.h
-!*.mk
 !.gitignore
