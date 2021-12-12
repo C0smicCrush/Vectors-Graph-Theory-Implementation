@@ -22,7 +22,10 @@ class Graph{
 		bool DFSprivate(int);
 		bool BFSprivate(int);
 		bool disconnectedHelper(int);
+		void removeVertexHelper(int,int);
 	public:
+		void clearGraph();
+		void printVertices();
 		bool existsVertex(int);
 		bool existsEdge(int,int);
 		void returnNeighbors(int);

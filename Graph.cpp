@@ -196,22 +196,38 @@ bool Graph::BFSprivate(int startingNode){
 	}
 	return ret;
 }
+
+
+
+
+
+
 bool Graph::removeVertex(int intIn){
 	bool removed = 0;
 	if(vertices > 0){
 	int loc = returnInsertLocation(intIn);
+	if(loc < adjNums.size()){
 	if(adjNums[loc] == intIn){
 		removed = 1;
-		for(int x = 0; x < vertices; x++){
-			adjList[x]->deleteNode(intIn);
-		}
-		delete adjList[loc];
-		adjList.erase(adjList.begin() + loc);
-		adjNums.erase(adjNums.begin() + loc);
-		vertices--;
+		removeVertexHelper(intIn,loc);
+			}
 		}
 	}
 	return removed;
+}
+void Graph::removeVertexHelper(int intIn, int loc){
+	for(int x = 0; x < vertices; x++){
+
+		adjList[x]->deleteNode(intIn);
+	}
+	LinkedList* ll = adjList[loc];
+	adjList[loc]->clearList();	
+	if (adjNums[loc] < 100){
+	delete ll;
+	}
+	adjList.erase(adjList.begin() + loc);
+	adjNums.erase(adjNums.begin() + loc);
+	vertices--;
 }
 bool Graph::removeEdge(int primary, int secondary){
 	bool removed = 0;
@@ -241,9 +257,18 @@ void Graph::returnNeighbors(int startingNode){
 	}
 
 }
-Graph::~Graph(){
+void Graph::printVertices(){
+	for(int x =0; x < vertices; x ++){
+		std::cout << adjNums[x] << " ";
+	}
+}
+void Graph::clearGraph(){
 	for(int x = 0; x < vertices; x++){
 		removeVertex(adjNums[x]);
 	}
+}
+Graph::~Graph(){
+	adjList.clear();
+	adjNums.clear();
 	vertices = 0;
 }

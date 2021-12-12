@@ -1,9 +1,4 @@
 #include "main.h"
-/*
-	Author: Aatmodhee Goswami
-	file: main.cpp
-	Purpose and usage: This file is the exhaustive testing ground for the Graph ADT
- */
 int main(){
 
 	Graph graph;// create Graph
@@ -54,9 +49,8 @@ int main(){
 	graph.BFS(4);//try BFS on a disconnected graph
 	std::cout << std::endl<<std::endl<<  "BFS and DFS on nonexistant vertex" << std::endl << "----------------------------"<<std::endl << std::endl;
 	std::cout << std::endl << "DFS : " << std::endl;
-	graph.DFS(5);//try DFS on nonexistant vertex
+	graph.DFS(6);//try DFS on nonexistant vertex
 	std::cout << "BFS : ";
-	graph.BFS(5);//try BFS on nonexistant vertex
 	std::cout << std::endl;
 	
 	
@@ -71,7 +65,7 @@ int main(){
 	graph.addEdge(4,2,3); // Add edge the opposite way and check if edge counter updates
 	std::cout << "Edges : " << graph.returnEdges()<<std::endl;
 	std::cout << std::endl<<  "Adding the edge with a proper primary but improper secondary" << std::endl << "---------------------------------------------------------------"<<std::endl << std::endl;
-	graph.addEdge(2,5,4);//Add edge with the primary int being part of the graph but the secondary int not being one
+	graph.addEdge(2,6,4);//Add edge with the primary int being part of the graph but the secondary int not being one
 	std::cout << "Edges : " << graph.returnEdges()<<std::endl;
 	std::cout << std::endl<<  "Adding the edge with improper primary and secondary" << std::endl << "-------------------------------------------------------"<<std::endl << std::endl;
 	graph.addEdge(7,6,10);// Add edge with neither of the ints being part of the graph
@@ -85,6 +79,7 @@ int main(){
 	std::cout << std::endl<<  "Disconnected Graph: " << std::endl << "----------------------------"<<std::endl << std::endl;
 	std::cout << "Is disconnected : " << graph.isDisconnected() << std::endl;//Check if isDisconnected works
 	std::cout << std::endl<<  "Connected Graph: " << std::endl << "----------------------------"<<std::endl << std::endl;
+	graph.addEdge(3,5,2);
 	graph.addEdge(2,3,3);//Add edge to create connected graph
 	std::cout << "Is disconnected : " << graph.isDisconnected() << std::endl; //Another check of isDisconnected
 	
@@ -100,7 +95,7 @@ int main(){
 	std::cout << std::endl;
 	std::cout << std::endl<<  "DFS on vertex without connections" << std::endl << "----------------------------"<<std::endl << std::endl;
 	std::cout << "DFS : ";
-	graph.DFS(3); //DFS on 3 which doesn't go to any other numbers 
+	graph.DFS(5); //DFS on 3 which doesn't go to any other numbers 
 	std::cout << std::endl<<std::endl;
 	
 	std::cout << std::endl<<  "adding vertices and edges to make testing easier" << std::endl << "---------------------------------------------------"<<std::endl;
@@ -116,9 +111,13 @@ int main(){
 	graph.addEdge(3,4,4);
 	graph.addEdge(3,5,7);
 	std::cout << ".....done" << std::endl;
+	std::cout << std::endl<<  "Testing addEdge under for loops" << std::endl << "----------------------------"<<std::endl << std::endl;
 	for(int x =0; x < 10; x++){
 		graph.addEdge(x,x-1,2); //Test how it performs under loops
 	}
+	std::cout << std::endl<<  "...done" << std::endl << "----------------------------"<<std::endl << std::endl;
+	std::cout << std::endl<<  "Testing printVertices()" << std::endl << "----------------------------"<<std::endl << std::endl;
+	graph.printVertices();
 	
 	
 	//returnNeighbors testing
@@ -202,7 +201,7 @@ int main(){
 	std::cout << std::endl<<  "Checking the Vertices and Edges" << std::endl << "----------------------------"<<std::endl << std::endl;
 	std::cout << "Edges : "  << graph.returnEdges() << std::endl;
 	std::cout << "Vertices : " << graph.returnVertices() << std::endl;
-	std::cout << std::endl<<  "Now trying BFS with a few random ints which are in the Graph" << std::endl << "----------------------------"<<std::endl << std::endl;
+	std::cout << std::endl<<  "Now trying BFS with a few random ints which could be in the Graph" << std::endl << "----------------------------"<<std::endl << std::endl;
 	for(int x = 0; x < 5; x++){
 		int ran = rand() % testdatasize;
 		std::cout << std::endl << "Next: " << std::endl;
@@ -211,7 +210,7 @@ int main(){
 	}
 	std::cout << std::endl<<  "Running isDisconnected" << std::endl << "----------------------------"<<std::endl << std::endl;
 	std::cout << "Disconnected : " << graph.isDisconnected() << std::endl;
-	std::cout << std::endl<<  "Now trying DFS with a few random ints which are in the Graph" << std::endl << "----------------------------"<<std::endl << std::endl;
+	std::cout << std::endl<<  "Now trying DFS with a few random ints which could be in the Graph" << std::endl << "----------------------------"<<std::endl << std::endl;
 	for(int x = 0; x < 5; x++){
 		int ran = rand() % testdatasize;
 		std::cout << std::endl << "Next: " << std::endl;
@@ -220,12 +219,13 @@ int main(){
 	}
 	std::cout << std::endl<<  "Running isDisconnected" << std::endl << "----------------------------"<<std::endl << std::endl;
 	std::cout << "Disconnected : " << graph.isDisconnected() << std::endl;
-	std::cout << std::endl<<  "Deleting Graph....." << std::endl << "----------------------------"<<std::endl << std::endl;
-  	//delete graph
- 	Graph* graphPtr;
- 	graphPtr = &graph;
- 	delete graphPtr;
- 	std::cout << "done...." << std::endl;
- 	
+	
+	std::cout << std::endl<<  "Running for loop on RemoveVertices " << std::endl << "----------------------------"<<std::endl << std::endl;
+
+  	for(int x =0; x < 30; x++){
+  		graph.removeVertex(x);
+	  }
+	std::cout << std::endl<<  "Done Testing" << std::endl << "----------------------------"<<std::endl << std::endl;
+ 	graph.clearGraph();
 	return 0;
 }
