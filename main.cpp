@@ -1,4 +1,4 @@
- main
+
 #include <iostream>
 #include "graph.h"
 /*
@@ -7,7 +7,6 @@
 	Purpose and usage: This file is the testing center of the Graph Class and includes all of its public methods to test
  */
 #include "main.h"
- main
 int main(){
 
 	Graph graph;// create Graph
