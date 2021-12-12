@@ -14,7 +14,7 @@ using std::vector;
 using std::queue;
 class Graph{
 	private:
-		int vertices,edges;
+		int vertices;
 		vector<LinkedList*> adjList;
 		vector<int> adjNums;
 		string outSTR;
