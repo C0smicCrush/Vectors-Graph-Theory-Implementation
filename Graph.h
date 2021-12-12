@@ -5,11 +5,11 @@
  */
 #ifndef GRAPH_H
 #define GRAPH_H
-#include "linkedlist.h"
-#include "stack.h"
 #include <vector>
 #include <queue>
 #include <algorithm>
+#include "linkedlist.h"
+#include "stack.h"
 using std::vector;
 using std::queue;
 class Graph{
