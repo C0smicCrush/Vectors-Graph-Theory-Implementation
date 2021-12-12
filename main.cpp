@@ -1,4 +1,5 @@
-#include "main.h"
+#include <iostream>
+#include "graph.h"
 int main(){
 
 	Graph graph;// create Graph
