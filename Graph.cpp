@@ -73,6 +73,7 @@ bool Graph::disconnectedHelper(int startNode){
 			}
 		}
 }
+	delete &stack;
 	if(vis == vertices){
 		ret = 1;
 	}
