@@ -65,7 +65,7 @@ bool Graph::disconnectedHelper(int startNode){
 		int count = adjList[loc]->getCount();
 		int arr2[count];
 		int* arr = arr2;
-		adjList[loc]->returnArray(arr);
+		adjList[loc]->fillArray(arr);
 		for(int x = count -1; x > -1; x--){
 			int loc = returnInsertLocation(arr2[x]);
 			if(!visited[loc]){
@@ -143,7 +143,7 @@ bool Graph::DFSprivate(int startNode){
 			int count = adjList[loc]->getCount();
 			int arr2[count];
 			int* arr = arr2;
-			adjList[loc]->returnArray(arr);
+			adjList[loc]->fillArray(arr);
 			for(int x = count -1; x > -1; x--){
 				int loc = returnInsertLocation(arr2[x]);
 				if(!visited[loc]){
@@ -182,7 +182,7 @@ bool Graph::BFSprivate(int startingNode){
 		int count = adjList[loc]->getCount();
 		int arr2[count];
 		int* arr = arr2;
-		adjList[loc]->returnArray(arr);
+		adjList[loc]->fillArray(arr);
 		for(int x = 0;x < count;x++){
 			int loc = returnInsertLocation(arr2[x]);
 			if(!visited[loc]){
