@@ -7,6 +7,7 @@
  #include "linkedlist.h"
  
  LinkedList::LinkedList(){
+ 	count  = 0;
 	head = NULL;
  }
 bool LinkedList::addNode(int idIn, string* inString,int Distance){
@@ -33,6 +34,7 @@ bool LinkedList::addNode(int idIn, string* inString,int Distance){
 			added = connectNodes(idIn,inString,position, nodePtr);
 		}
 	}
+	count = count + added;
 	 return added;
 }
 
@@ -144,6 +146,7 @@ void LinkedList::returnArray(int* inArr){
 		exists = deleteSubFunc(ptr);
 	}
 }
+	 count = count - exists;
 	 return exists;
 
  }
@@ -184,14 +187,6 @@ void LinkedList::returnArray(int* inArr){
 	 return exists;
  }
  int LinkedList::getCount(){
- 	Node* position;
- 	int count = 0;
- 	count = 0;
- 	position = head;
- 	while(position != NULL){
- 		position = position->next;
- 		count++;
-	 }
 	 return count;
  }
  void LinkedList::printList(bool x){

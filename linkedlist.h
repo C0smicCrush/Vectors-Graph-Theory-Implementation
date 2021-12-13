@@ -13,6 +13,7 @@
  {
  	private:
  	Node *head;
+ 	int count;
 
  		bool addNewHead(int, string*,Node*, Node*);
  		bool addNewTail(int, string*,Node*, Node*);
