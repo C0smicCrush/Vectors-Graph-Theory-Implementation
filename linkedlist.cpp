@@ -136,6 +136,7 @@ void LinkedList::fillArray(int* inArr){
 		 delete ptr;
 	 }
 	 head = NULL;
+	count = 0;
  	return true;
  }
  bool LinkedList::deleteNode(int idIn){
