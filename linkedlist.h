@@ -20,7 +20,7 @@
  		bool connectNodes(int, string*, Node*, Node*);
  		bool deleteSubFunc(Node*);
  	public:
- 		void returnArray(int*);
+ 		void fillArray(int*);
  		LinkedList();
  		bool addNode(int, string*,int);
  		bool deleteNode(int);

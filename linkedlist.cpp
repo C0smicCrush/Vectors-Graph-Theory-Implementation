@@ -78,14 +78,17 @@ bool LinkedList::addNode(int idIn, string* inString,int Distance){
  
  return true;
  }
-void LinkedList::returnArray(int* inArr){
- 	int count = getCount();
+void LinkedList::fillArray(int* inArr){
+// start at the begining of the list
  	Node* pos = head;
- 	for(int x =0; x < count; x++){
- 		*(inArr+x) = pos->data.id;
- 		pos = pos->next;
-
-	 }
+// loop until the end is reached
+    while( pos ) {
+// copy data into next array position
+ 	*(inArr++) = pos->data.id;
+// step to next list position
+ 	pos = pos->next;
+// check we have been promised a sufficient large array
+	}
  }
  bool LinkedList::getNode(int id, Data* inData){
  	bool added = true;
