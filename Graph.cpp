@@ -107,12 +107,30 @@ bool Graph::addVertex(int inVert){
 }
 int Graph::returnInsertLocation(int intIn){
 	int retInt = 0;
-	if (adjNums.size() > 0){
+	if(adjNums.size() > 0){
 		for(int x = 0; x < adjNums.size(); x++ ){
 			if(adjNums[x] < intIn){
 				retInt++;
 			}
 		}
+//		int left = 0;
+//		int right = vertices -1;
+//		while(left <= right){
+//			int middle = (right + left)/2;
+//			if(intIn == adjNums[middle]){
+//				return middle;
+//			}
+//			if(intIn < adjNums[middle]){
+//				right = middle -1;
+//			}
+//			if(intIn > adjNums[middle]){
+//				left = middle + 1;
+//			}
+//			
+//		}
+		
+		
+		
 	}
 	return retInt;
 }
