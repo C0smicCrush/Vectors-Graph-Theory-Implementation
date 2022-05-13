@@ -44,7 +44,6 @@ bool LinkedList::addNode(int idIn, string* inString,int Distance){
 	position->next = inNode;
 	inNode->next = NULL;
 	inNode->prev = position;
-	tail = inNode;
 	return true;
  }
  bool LinkedList::connectNodes(int idIn, string* inString, Node* position, Node* inNode){
