@@ -62,7 +62,7 @@ bool Graph::disconnectedHelper(int startNode){
 			vis++;
 			visited[loc] = true;
 		}
-		int count = adjList[loc]->getCount();
+		int count = adjList[loc]->getCount();  //Testing VSCODE
 		int arr2[count];
 		int* arr = arr2;
 		adjList[loc]->fillArray(arr);
